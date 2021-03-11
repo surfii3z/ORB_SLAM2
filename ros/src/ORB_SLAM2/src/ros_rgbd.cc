@@ -58,6 +58,11 @@ int main(int argc, char **argv)
         return 1;
     }    
 
+    // cout << "OpenCV version : " << CV_VERSION << endl;
+    // cout << "Major version : " << CV_MAJOR_VERSION << endl;
+    // cout << "Minor version : " << CV_MINOR_VERSION << endl;
+    // std::cout << cv::getBuildInformation() << std::endl;
+
     // Create SLAM system. It initializes all system threads and gets ready to process frames.
     ORB_SLAM2::System SLAM(argv[1],argv[2],ORB_SLAM2::System::RGBD,true);
 
