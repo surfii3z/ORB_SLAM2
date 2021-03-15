@@ -79,9 +79,17 @@ public:
 // ref: https://stackoverflow.com/questions/31549398/c-eigen-initialize-static-matrix
 static const Eigen::Matrix3d cv_to_ros = [] {
   Eigen::Matrix3d tmp;
-  tmp << 1, 0, 0,
-         0, 0, 1,
+  // tmp << 1, 0, 0,
+        //  0, 0, 1,
+        //  0,-1, 0;
+
+  tmp << 0, 0, 1,
+        -1, 0, 0,
          0,-1, 0;
+
+  // tmp << 1, 0, 0,
+        //  0, 1, 0,
+        //  0, 0, 1;
   return tmp;
 }();
 
@@ -102,7 +110,12 @@ namespace common
     Eigen::Vector3d trans = Twc.block<3, 1>(0, 3);
 
     // Transform from CV coordinate system to ROS coordinate system on camera coordinates
+    // Eigen::Quaterniond quat(cv_to_ros * rot * cv_to_ros.transpose());
     Eigen::Quaterniond quat(cv_to_ros * rot * cv_to_ros.transpose());
+
+
+    // Eigen::Quaterniond quat(rot);
+
     trans = cv_to_ros * trans;
 
     // Format the Odom msg
@@ -143,6 +156,9 @@ namespace common
     static tf2_ros::TransformBroadcaster tf_br;
     geometry_msgs::TransformStamped transformStamped_msg;
 
+    // pointcloud is along z axis, so we need to rotate camera frame
+    Eigen::Quaterniond quat_cam_frame(cv_to_ros * rot);
+
     transformStamped_msg.header.stamp = msgRGB->header.stamp;
     transformStamped_msg.header.frame_id = "world";
     transformStamped_msg.child_frame_id = "camera";
@@ -151,10 +167,10 @@ namespace common
     transformStamped_msg.transform.translation.y = trans(1);
     transformStamped_msg.transform.translation.z = trans(2);
 
-    transformStamped_msg.transform.rotation.x = quat.x();
-    transformStamped_msg.transform.rotation.y = quat.y();
-    transformStamped_msg.transform.rotation.z = quat.z();
-    transformStamped_msg.transform.rotation.w = quat.w();
+    transformStamped_msg.transform.rotation.x = quat_cam_frame.x();
+    transformStamped_msg.transform.rotation.y = quat_cam_frame.y();
+    transformStamped_msg.transform.rotation.z = quat_cam_frame.z();
+    transformStamped_msg.transform.rotation.w = quat_cam_frame.w();
 
     tf_br.sendTransform(transformStamped_msg);
   }
