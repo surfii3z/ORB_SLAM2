@@ -31,3 +31,6 @@ tools/bin_vocabulary
 ros/.catkin_tools
 ros/devel
 ros/logs
+
+*orb_slam2*.txt
+eval_RGBD.sh

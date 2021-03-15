@@ -1,7 +1,7 @@
 echo "Configuring and building Thirdparty/DBoW2 ..."
 
 cd Thirdparty/DBoW2
-rm -rf build
+# rm -rf build
 mkdir build
 cd build
 cmake .. -DCMAKE_BUILD_TYPE=Release
@@ -10,7 +10,7 @@ make -j32
 cd ../../g2o
 
 echo "Configuring and building Thirdparty/g2o ..."
-rm -rf build
+# rm -rf build
 mkdir build
 
 
@@ -27,7 +27,7 @@ tar -xf ORBvoc.txt.tar.gz
 cd ..
 
 echo "Configuring and building ORB_SLAM2 ..."
-rm -rf build
+# rm -rf build
 mkdir build
 
 
