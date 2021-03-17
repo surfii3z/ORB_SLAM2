@@ -27,6 +27,9 @@ Camera.RGB: 1
 # Close/Far threshold. Baseline times.
 ThDepth: 40.0
 
+# IR projector baseline times fx (aprox.)
+Camera.bf: 0.0
+
 # Deptmap values factor 
 DepthMapFactor: 256.0
 

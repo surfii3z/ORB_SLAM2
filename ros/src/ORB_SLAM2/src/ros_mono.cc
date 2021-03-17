@@ -54,7 +54,7 @@ int main(int argc, char **argv)
 
     ImageGrabber igb(&SLAM, &nh);
 
-    ros::Subscriber sub = nh.subscribe("/camera/image_raw", 1, &ImageGrabber::GrabImage, &igb);
+    ros::Subscriber sub = nh.subscribe("/camera/color/image_raw", 1, &ImageGrabber::GrabImage, &igb);
 
     ros::spin();
 

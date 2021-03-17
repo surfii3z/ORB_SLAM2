@@ -4,13 +4,13 @@
 # Camera Parameters. Adjust them!
 #--------------------------------------------------------------------------------------------
 
-Camera.fx: 199.17914999999996
-Camera.fy: 199.17914999999996
-Camera.cx: 269.5
-Camera.cy: 163.0
+Camera.fx: 199.25007422675608
+Camera.fy: 199.25007422675608
+Camera.cx: 192.0
+Camera.cy: 144.0
 
-Camera.width: 539
-Camera.height: 326
+Camera.width: 384
+Camera.height: 288
 
 # distoration model
 Camera.k1: 0.0
@@ -23,13 +23,13 @@ Camera.k3: 0.0
 Camera.fps: 30
 
 # Color order of the images (0: BGR, 1: RGB. It is ignored if images are grayscale)
-Camera.RGB: 1
+Camera.RGB: 0
 
 #--------------------------------------------------------------------------------------------
 # System Parameters
 #--------------------------------------------------------------------------------------------
 
-System.LoopClosing: 0
+System.LoopClosing: 1
 #--------------------------------------------------------------------------------------------
 # ORB Parameters
 #--------------------------------------------------------------------------------------------
