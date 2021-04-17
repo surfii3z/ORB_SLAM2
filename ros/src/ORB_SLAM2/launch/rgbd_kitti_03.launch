@@ -1,6 +1,6 @@
 <launch>
-  <arg name="vocab_path" value="$(find orb_slam2)/../../../Vocabulary/ORBvoc.bin" />
-  <arg name="config_path" value="$(find orb_slam2)/../../../cam_configs/rgbd_kitti_03.yaml" />
+  <arg name="vocab_path" value="$(find orb_slam2)../../../Vocabulary/ORBvoc.bin" />
+  <arg name="config_path" value="$(find orb_slam2)../../../cam_configs/rgbd_kitti_03.yaml" />
   
   <node name="orb_slam2_rgbd" pkg="orb_slam2" type="rgbd" args="$(arg vocab_path) $(arg config_path)"/>
 
