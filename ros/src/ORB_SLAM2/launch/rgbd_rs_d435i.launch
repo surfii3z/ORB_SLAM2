@@ -3,7 +3,7 @@
   <arg name="config_path" value="$(find orb_slam2)../../../cam_configs/rgbd_rs_d435i.yaml" />
   
   <node name="orb_slam2_rgbd" pkg="orb_slam2" type="rgbd" args="$(arg vocab_path) $(arg config_path)">
-    <remap from="camera/color/image_raw" to="camera/color/image_raw" />
+    <!-- <remap from="camera/color/image_raw" to="camera/color/image_raw" /> -->
     <remap from="camera/registered_depth/image_raw" to="camera/aligned_depth_to_color/image_raw" />
 
   </node>
