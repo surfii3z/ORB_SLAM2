@@ -4,7 +4,10 @@
 - Binary version of vocabs to speed up the system start-up: [raulmur/ORB_SLAM2/PR#21](https://github.com/raulmur/ORB_SLAM2/pull/21)
 - Save/ load map: [raulmur/ORB_SLAM2/PR#381](https://github.com/raulmur/ORB_SLAM2/pull/381)
 
-
+### Running Example 
+```bash
+roslaunch orb_slam2 mono_tello.launch
+```
 
 ### Below is the README.md from [Alkaid-Benetnash](https://github.com/Alkaid-Benetnash/ORB_SLAM2/tree/master) 
 ____________________________________________________________________________________________________________________________
