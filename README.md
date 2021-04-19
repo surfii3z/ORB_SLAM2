@@ -4,6 +4,31 @@
 - Binary version of vocabs to speed up the system start-up: [raulmur/ORB_SLAM2/PR#21](https://github.com/raulmur/ORB_SLAM2/pull/21)
 - Save/ load map: [raulmur/ORB_SLAM2/PR#381](https://github.com/raulmur/ORB_SLAM2/pull/381)
 
+### Installation
+1) Install cuda-enable OpenCV. Tested with `OpenCV 3.4.11` and `CUDA 10.1`
+    - [Installing Multiple CUDA & cuDNN Versions in Ubuntu](https://towardsdatascience.com/installing-multiple-cuda-cudnn-versions-in-ubuntu-fcb6aa5194e2)
+    - Compile opencv with cuda following this [link](https://learnopencv.com/opencv-dnn-with-gpu-support/). Tested with `OpenCV 3.4.13` and `CUDA 11.1`
+
+2) Install the prerequisites from [ORB_SLAM2](https://github.com/raulmur/ORB_SLAM2) original repo.
+3) Build using `build.sh`
+```bash
+cd /path/to/ORB_SLAM2
+sh build.sh
+```
+4) Build the binary version of vocaburary.
+```
+./tools/bin_vocabulary
+```
+5) Compile cv_bridge from source. This is because the default version of OpenCV that comes with Ubuntu is not CUDA-enabled. So we need to install CUDA-enabled version of OpenCV (in the previous step) and then recompile vision_opencv with the new version of the OpenCV. Otherwise, catkin workspace will craw in the default version of OpenCV causing catkin build error.
+
+```bash
+ cd /path/to/ORB_SLAM2/ros/
+ git clone --branch ${ROS_DISTRO} --depth 1 https://github.com/ros-perception/vision_opencv.git
+ cp -r vision_opencv/cv_bridge src/. 
+ rm -rf vision_opencv
+ catkin build
+```
+
 ### Running Example 
 ```bash
 roslaunch orb_slam2 mono_tello.launch
