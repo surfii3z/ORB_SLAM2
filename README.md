@@ -1,3 +1,13 @@
+# Enhanced Features from original ORB_SLAM2
+- ROS publish odometry message: [raulmur/ORB_SLAM2/PR#692](https://github.com/raulmur/ORB_SLAM2/pull/692)
+- ROS build with catkin build: [raulmur/ORB_SLAM2/PR#2](https://github.com/raulmur/ORB_SLAM2/pull/2)
+- Binary version of vocabs to speed up the system start-up: [raulmur/ORB_SLAM2/PR#21](https://github.com/raulmur/ORB_SLAM2/pull/21)
+- Save/ load map: [raulmur/ORB_SLAM2/PR#381](https://github.com/raulmur/ORB_SLAM2/pull/381)
+
+
+
+### Below is the README.md from [Alkaid-Benetnash](https://github.com/Alkaid-Benetnash/ORB_SLAM2/tree/master) 
+____________________________________________________________________________________________________________________________
 # ORB-SLAM2
 **Authors:** [Raul Mur-Artal](http://webdiis.unizar.es/~raulmur/), [Juan D. Tardos](http://webdiis.unizar.es/~jdtardos/), [J. M. M. Montiel](http://webdiis.unizar.es/~josemari/) and [Dorian Galvez-Lopez](http://doriangalvez.com/) ([DBoW2](https://github.com/dorian3d/DBoW2))
 
