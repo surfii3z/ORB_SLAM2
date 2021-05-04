@@ -1,8 +1,8 @@
-Linked: (/home/jy/orb_slam_ws/orb_slam2_map/ros/devel/.private/cv_bridge/share/cv_bridge/cmake/cv_bridge-extras.cmake, /home/jy/orb_slam_ws/orb_slam2_map/ros/devel/share/cv_bridge/cmake/cv_bridge-extras.cmake)
-Linked: (/home/jy/orb_slam_ws/orb_slam2_map/ros/devel/.private/cv_bridge/share/cv_bridge/cmake/cv_bridgeConfig.cmake, /home/jy/orb_slam_ws/orb_slam2_map/ros/devel/share/cv_bridge/cmake/cv_bridgeConfig.cmake)
-Linked: (/home/jy/orb_slam_ws/orb_slam2_map/ros/devel/.private/cv_bridge/share/cv_bridge/cmake/cv_bridgeConfig-version.cmake, /home/jy/orb_slam_ws/orb_slam2_map/ros/devel/share/cv_bridge/cmake/cv_bridgeConfig-version.cmake)
-Linked: (/home/jy/orb_slam_ws/orb_slam2_map/ros/devel/.private/cv_bridge/lib/libcv_bridge.so, /home/jy/orb_slam_ws/orb_slam2_map/ros/devel/lib/libcv_bridge.so)
-Linked: (/home/jy/orb_slam_ws/orb_slam2_map/ros/devel/.private/cv_bridge/lib/python2.7/dist-packages/cv_bridge/__init__.py, /home/jy/orb_slam_ws/orb_slam2_map/ros/devel/lib/python2.7/dist-packages/cv_bridge/__init__.py)
-Linked: (/home/jy/orb_slam_ws/orb_slam2_map/ros/devel/.private/cv_bridge/lib/python2.7/dist-packages/cv_bridge/boost/cv_bridge_boost.so, /home/jy/orb_slam_ws/orb_slam2_map/ros/devel/lib/python2.7/dist-packages/cv_bridge/boost/cv_bridge_boost.so)
-Linked: (/home/jy/orb_slam_ws/orb_slam2_map/ros/devel/.private/cv_bridge/lib/python2.7/dist-packages/cv_bridge/boost/__init__.py, /home/jy/orb_slam_ws/orb_slam2_map/ros/devel/lib/python2.7/dist-packages/cv_bridge/boost/__init__.py)
-Linked: (/home/jy/orb_slam_ws/orb_slam2_map/ros/devel/.private/cv_bridge/lib/pkgconfig/cv_bridge.pc, /home/jy/orb_slam_ws/orb_slam2_map/ros/devel/lib/pkgconfig/cv_bridge.pc)
+Symlinking /home/nvadmin/jy_ws/orb_slam_ws/orb_slam2/ros/devel/share/cv_bridge/cmake/cv_bridgeConfig.cmake
+Symlinking /home/nvadmin/jy_ws/orb_slam_ws/orb_slam2/ros/devel/share/cv_bridge/cmake/cv_bridgeConfig-version.cmake
+Symlinking /home/nvadmin/jy_ws/orb_slam_ws/orb_slam2/ros/devel/share/cv_bridge/cmake/cv_bridge-extras.cmake
+Symlinking /home/nvadmin/jy_ws/orb_slam_ws/orb_slam2/ros/devel/lib/libcv_bridge.so
+Symlinking /home/nvadmin/jy_ws/orb_slam_ws/orb_slam2/ros/devel/lib/python2.7/dist-packages/cv_bridge/__init__.py
+Symlinking /home/nvadmin/jy_ws/orb_slam_ws/orb_slam2/ros/devel/lib/python2.7/dist-packages/cv_bridge/boost/cv_bridge_boost.so
+Symlinking /home/nvadmin/jy_ws/orb_slam_ws/orb_slam2/ros/devel/lib/python2.7/dist-packages/cv_bridge/boost/__init__.py
+Symlinking /home/nvadmin/jy_ws/orb_slam_ws/orb_slam2/ros/devel/lib/pkgconfig/cv_bridge.pc
