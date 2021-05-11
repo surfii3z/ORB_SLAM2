@@ -1,6 +1,6 @@
-Linked: (/home/jy/orb_slam_ws/orb_slam2_map/ros/devel/.private/orb_slam2/share/orb_slam2/cmake/orb_slam2Config.cmake, /home/jy/orb_slam_ws/orb_slam2_map/ros/devel/share/orb_slam2/cmake/orb_slam2Config.cmake)
-Linked: (/home/jy/orb_slam_ws/orb_slam2_map/ros/devel/.private/orb_slam2/share/orb_slam2/cmake/orb_slam2Config-version.cmake, /home/jy/orb_slam_ws/orb_slam2_map/ros/devel/share/orb_slam2/cmake/orb_slam2Config-version.cmake)
-Linked: (/home/jy/orb_slam_ws/orb_slam2_map/ros/devel/.private/orb_slam2/lib/pkgconfig/orb_slam2.pc, /home/jy/orb_slam_ws/orb_slam2_map/ros/devel/lib/pkgconfig/orb_slam2.pc)
-Linked: (/home/jy/orb_slam_ws/orb_slam2_map/ros/devel/.private/orb_slam2/lib/orb_slam2/mono, /home/jy/orb_slam_ws/orb_slam2_map/ros/devel/lib/orb_slam2/mono)
-Linked: (/home/jy/orb_slam_ws/orb_slam2_map/ros/devel/.private/orb_slam2/lib/orb_slam2/rgbd, /home/jy/orb_slam_ws/orb_slam2_map/ros/devel/lib/orb_slam2/rgbd)
-Linked: (/home/jy/orb_slam_ws/orb_slam2_map/ros/devel/.private/orb_slam2/lib/orb_slam2/stereo, /home/jy/orb_slam_ws/orb_slam2_map/ros/devel/lib/orb_slam2/stereo)
+Symlinking /home/nvadmin/jy_ws/orb_slam_ws/orb_slam2/ros/devel/share/orb_slam2/cmake/orb_slam2Config.cmake
+Symlinking /home/nvadmin/jy_ws/orb_slam_ws/orb_slam2/ros/devel/share/orb_slam2/cmake/orb_slam2Config-version.cmake
+Symlinking /home/nvadmin/jy_ws/orb_slam_ws/orb_slam2/ros/devel/lib/pkgconfig/orb_slam2.pc
+Symlinking /home/nvadmin/jy_ws/orb_slam_ws/orb_slam2/ros/devel/lib/orb_slam2/stereo
+Symlinking /home/nvadmin/jy_ws/orb_slam_ws/orb_slam2/ros/devel/lib/orb_slam2/mono
+Symlinking /home/nvadmin/jy_ws/orb_slam_ws/orb_slam2/ros/devel/lib/orb_slam2/rgbd

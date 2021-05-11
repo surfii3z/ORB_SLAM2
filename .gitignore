@@ -24,5 +24,10 @@ lib/
 .catkin_tools
 .vscode
 ORBvoc.bin
+*.log
+<<<<<<< HEAD
 
 logs/
+=======
+ros/devel
+>>>>>>> 969655e21a3700adac301eaad41140d4baff7ef0

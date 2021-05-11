@@ -1,1 +1,0 @@
-/home/jy/orb_slam_ws/orb_slam2_map/ros/devel/.private/orb_slam2/share/orb_slam2/cmake/orb_slam2Config.cmake
