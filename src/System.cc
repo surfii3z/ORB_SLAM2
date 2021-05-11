@@ -343,6 +343,7 @@ void System::Shutdown()
     }
     if(mpViewer)
         pangolin::BindToContext("ORB-SLAM2: Map Viewer");
+        
     if (is_save_map)
         SaveMap(mapfile);
 }

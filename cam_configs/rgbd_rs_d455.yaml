@@ -4,38 +4,49 @@
 # Camera Parameters. Adjust them!
 #--------------------------------------------------------------------------------------------
 
-Camera.fx: 420.120517550325
-Camera.fy: 417.194679748478
-Camera.cx: 288.366632229566
-Camera.cy: 207.209560650473
+# Camera calibration and distortion parameters (OpenCV) 
+Camera.fx: 382.6885681152344
+Camera.fy: 381.63482666015625
+Camera.cx: 311.8787841796875
+Camera.cy: 247.81253051757812
 
 Camera.width: 640
 Camera.height: 480
 
 # distoration model
-Camera.k1: -0.315994004632295
-Camera.k2: 0.0802101876711164
-Camera.p1: 0.00781234440915302
-Camera.p2: 0.00271302928895873
-Camera.k3: 0.0
+Camera.k1: -0.055785614997148514
+Camera.k2: 0.06651262193918228
+Camera.p1: -0.0009827329777181149
+Camera.p2: 6.485397898359224e-05
+Camera.k3: -0.021263061091303825
 
 # Camera frames per second 
 Camera.fps: 30
 
+# IR projector baseline times fx (aprox.)
+Camera.bf: 36.3554139709
+
 # Color order of the images (0: BGR, 1: RGB. It is ignored if images are grayscale)
-Camera.RGB: 0
+Camera.RGB: 1
+
+# Close/Far threshold. Baseline times.
+ThDepth: 40.0
+
+# Deptmap values factor 
+DepthMapFactor: 1000
 
 #--------------------------------------------------------------------------------------------
 # System Parameters
 #--------------------------------------------------------------------------------------------
 
-System.LoopClosing: 0
+System.LoopClosing: 1
+
 #--------------------------------------------------------------------------------------------
 # ORB Parameters
 #--------------------------------------------------------------------------------------------
 
 # ORB Extractor: Number of features per image
-ORBextractor.nFeatures: 2000
+ORBextractor.nFeatures: 1000
 
 # ORB Extractor: Scale factor between levels in the scale pyramid 	
 ORBextractor.scaleFactor: 1.2
@@ -67,5 +78,5 @@ Viewer.ViewpointF: 2800
 #--------------------------------------------------------------------------------------------
 # Map Parapeters
 #--------------------------------------------------------------------------------------------
-# Map.mapfile: map.bin
+Map.mapfile: rgbd_d455_exp_room.bin
 

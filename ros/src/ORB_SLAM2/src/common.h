@@ -17,6 +17,7 @@
 #include <ros/ros.h>
 
 #include <iostream>
+#include <iomanip>
 #include <algorithm>
 #include <fstream>
 #include <chrono>
@@ -40,6 +41,9 @@
 #include "../../../include/System.h"
 
 using namespace std;
+
+double scale_factor;
+
 
 // define SLAM and publisher for all the systems
 class ImageGrabber
@@ -97,7 +101,7 @@ namespace common
   inline void CreateMsg(nav_msgs::Odometry &odom, geometry_msgs::PoseStamped &poseStamped,
                         geometry_msgs::PoseWithCovarianceStamped &poseWithCovStamped,
                         const sensor_msgs::ImageConstPtr &msgRGB,
-                        cv::Mat cvTcw)
+                        cv::Mat cvTcw, double scale)
   {
     // Invert to get the cvTwc
     cv::Mat cvTwc = cvTcw.inv();
@@ -118,9 +122,9 @@ namespace common
     // odom.header.frame_id = msgRGB->header.frame_id;
     odom.header.frame_id = "world";
 
-    odom.pose.pose.position.x = trans(0);
-    odom.pose.pose.position.y = trans(1);
-    odom.pose.pose.position.z = trans(2);
+    odom.pose.pose.position.x = trans(0) * scale;
+    odom.pose.pose.position.y = trans(1) * scale;
+    odom.pose.pose.position.z = trans(2) * scale;
 
     odom.pose.pose.orientation.x = quat.x();
     odom.pose.pose.orientation.y = quat.y();
@@ -138,9 +142,9 @@ namespace common
     poseStamped.header.stamp = msgRGB->header.stamp;
     poseStamped.header.frame_id = "world";
 
-    poseStamped.pose.position.x = trans(0);
-    poseStamped.pose.position.y = trans(1);
-    poseStamped.pose.position.z = trans(2);
+    poseStamped.pose.position.x = trans(0) * scale;
+    poseStamped.pose.position.y = trans(1) * scale;
+    poseStamped.pose.position.z = trans(2) * scale;
 
     poseStamped.pose.orientation.x = quat.x();
     poseStamped.pose.orientation.y = quat.y();
@@ -150,9 +154,9 @@ namespace common
     // Create pose message and update it with current camera pose
     poseWithCovStamped.header.stamp = msgRGB->header.stamp;
     poseWithCovStamped.header.frame_id = "odom";
-    poseWithCovStamped.pose.pose.position.x = trans(0);
-    poseWithCovStamped.pose.pose.position.y = trans(1);
-    poseWithCovStamped.pose.pose.position.z = trans(2);
+    poseWithCovStamped.pose.pose.position.x = trans(0) * scale;
+    poseWithCovStamped.pose.pose.position.y = trans(1) * scale;
+    poseWithCovStamped.pose.pose.position.z = trans(2) * scale;
     poseWithCovStamped.pose.pose.orientation.x = quat.x();
     poseWithCovStamped.pose.pose.orientation.y = quat.y();
     poseWithCovStamped.pose.pose.orientation.z = quat.z();

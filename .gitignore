@@ -24,3 +24,5 @@ lib/
 .catkin_tools
 .vscode
 ORBvoc.bin
+
+logs/

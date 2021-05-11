@@ -4,32 +4,34 @@
 # Camera Parameters. Adjust them!
 #--------------------------------------------------------------------------------------------
 
-Camera.fx: 420.120517550325
-Camera.fy: 417.194679748478
-Camera.cx: 288.366632229566
-Camera.cy: 207.209560650473
+# Camera calibration and distortion parameters (OpenCV) 
+Camera.fx: 610.6054077148438
+Camera.fy: 610.6906127929688
+Camera.cx: 318.5420837402344
+Camera.cy: 238.67047119140625
 
 Camera.width: 640
 Camera.height: 480
 
 # distoration model
-Camera.k1: -0.315994004632295
-Camera.k2: 0.0802101876711164
-Camera.p1: 0.00781234440915302
-Camera.p2: 0.00271302928895873
+Camera.k1: 0.0
+Camera.k2: 0.0
+Camera.p1: 0.0
+Camera.p2: 0.0
 Camera.k3: 0.0
 
 # Camera frames per second 
-Camera.fps: 30
+Camera.fps: 30.0
 
 # Color order of the images (0: BGR, 1: RGB. It is ignored if images are grayscale)
-Camera.RGB: 0
+Camera.RGB: 1
 
 #--------------------------------------------------------------------------------------------
 # System Parameters
 #--------------------------------------------------------------------------------------------
 
-System.LoopClosing: 0
+System.LoopClosing: 1
+
 #--------------------------------------------------------------------------------------------
 # ORB Parameters
 #--------------------------------------------------------------------------------------------
@@ -67,5 +69,5 @@ Viewer.ViewpointF: 2800
 #--------------------------------------------------------------------------------------------
 # Map Parapeters
 #--------------------------------------------------------------------------------------------
-# Map.mapfile: map.bin
+Map.mapfile: mono_d435i.bin
 

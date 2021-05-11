@@ -43,15 +43,17 @@ int main(int argc, char **argv)
     ros::init(argc, argv, "RGBD");
     ros::start();
 
-    if(argc != 4)
+    if(argc != 6)
     {
-        cerr << endl << "Usage: rosrun ORB_SLAM2 Stereo path_to_vocabulary path_to_settings do_rectify" << endl;
+        cerr << endl << "Usage: rosrun ORB_SLAM2 Stereo path_to_vocabulary path_to_settings [1|0](save map?) do_rectify scale" << endl;
         ros::shutdown();
         return 1;
     }    
 
     // Create SLAM system. It initializes all system threads and gets ready to process frames.
-    ORB_SLAM2::System SLAM(argv[1],argv[2],ORB_SLAM2::System::STEREO,true);
+    ORB_SLAM2::System SLAM(argv[1],argv[2],ORB_SLAM2::System::STEREO,true, (bool)atoi(argv[3]));
+
+    scale_factor = atof(argv[4]);
 
     ros::NodeHandle nh;
 
@@ -162,7 +164,7 @@ void ImageGrabber::GrabStereo(const sensor_msgs::ImageConstPtr& msgLeft,const se
     // publish pose if not empty
     if (!cvTcw.empty())
     {
-        common::CreateMsg(odom_msg, poseStamped_msg, poseWithCovStamped_msg, msgLeft, cvTcw);
+        common::CreateMsg(odom_msg, poseStamped_msg, poseWithCovStamped_msg, msgLeft, cvTcw, scale_factor);
         mOdomPub.publish(odom_msg);
         mPoseStampedPub.publish(poseStamped_msg);
         mPoseWithCovStampedPub.publish(poseWithCovStamped_msg);

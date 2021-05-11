@@ -43,9 +43,9 @@ int main(int argc, char **argv)
     ros::init(argc, argv, "RGBD");
     ros::start();
 
-    if(argc != 4)
+    if(argc != 5)
     {
-        cerr << endl << "Usage: rosrun ORB_SLAM2 RGBD path_to_vocabulary path_to_settings [1|0](save map?)" << endl;        
+        cerr << endl << "Usage: rosrun ORB_SLAM2 RGBD path_to_vocabulary path_to_settings [1|0](save map?) scale" << endl;        
         ros::shutdown();
         return 1;
     }    
@@ -53,12 +53,14 @@ int main(int argc, char **argv)
     // Create SLAM system. It initializes all system threads and gets ready to process frames.
     ORB_SLAM2::System SLAM(argv[1],argv[2],ORB_SLAM2::System::RGBD,true, (bool)atoi(argv[3]));
 
+    scale_factor = atof(argv[4]);
+
     ros::NodeHandle nh;
 
     ImageGrabber igb(&SLAM, &nh);
 
-    message_filters::Subscriber<sensor_msgs::Image> rgb_sub(nh, "camera/rgb/image_raw", 1);
-    message_filters::Subscriber<sensor_msgs::Image> depth_sub(nh, "camera/registered_depth/image_raw", 1);
+    message_filters::Subscriber<sensor_msgs::Image> rgb_sub(nh, "/camera/color/image_raw", 1);
+    message_filters::Subscriber<sensor_msgs::Image> depth_sub(nh, "/camera/aligned_depth_to_color/image_raw", 1);
     typedef message_filters::sync_policies::ApproximateTime<sensor_msgs::Image, sensor_msgs::Image> sync_pol;
     message_filters::Synchronizer<sync_pol> sync(sync_pol(10), rgb_sub,depth_sub);
     sync.registerCallback(boost::bind(&ImageGrabber::GrabRGBD,&igb,_1,_2));
@@ -105,7 +107,7 @@ void ImageGrabber::GrabRGBD(const sensor_msgs::ImageConstPtr& msgRGB,const senso
     // publish pose if not empty
     if (!cvTcw.empty())
     {
-        common::CreateMsg(odom_msg, poseStamped_msg, poseWithCovStamped_msg, msgRGB, cvTcw);
+        common::CreateMsg(odom_msg, poseStamped_msg, poseWithCovStamped_msg, msgRGB, cvTcw, scale_factor);
         mOdomPub.publish(odom_msg);
         mPoseStampedPub.publish(poseStamped_msg);
         mPoseWithCovStampedPub.publish(poseWithCovStamped_msg);
