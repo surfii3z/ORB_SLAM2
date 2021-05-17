@@ -162,9 +162,10 @@ void ImageGrabber::GrabStereo(const sensor_msgs::ImageConstPtr& msgLeft,const se
     // publish pose if not empty
     if (!cvTcw.empty())
     {
-        common::CreateMsg(odom_msg, poseStamped_msg, poseWithCovStamped_msg, msgLeft, cvTcw);
+        common::CreateMsg(odom_msg, poseStamped_msg, poseStamped_fast_planner_msg, poseWithCovStamped_msg, msgLeft, cvTcw);
         mOdomPub.publish(odom_msg);
         mPoseStampedPub.publish(poseStamped_msg);
+        mPoseStampedFastPlannerPub.publish(poseStamped_fast_planner_msg);
         mPoseWithCovStampedPub.publish(poseWithCovStamped_msg);
 
     }

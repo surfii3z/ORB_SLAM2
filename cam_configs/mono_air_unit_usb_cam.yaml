@@ -4,26 +4,26 @@
 # Camera Parameters. Adjust them!
 #--------------------------------------------------------------------------------------------
 
-Camera.fx: 420.120517550325
-Camera.fy: 417.194679748478
-Camera.cx: 288.366632229566
-Camera.cy: 207.209560650473
+Camera.fx: 461.139166698011
+Camera.fy: 458.851612256228
+Camera.cx: 337.317269946355
+Camera.cy: 236.421420258467
 
 Camera.width: 640
 Camera.height: 480
 
 # distoration model
-Camera.k1: -0.315994004632295
-Camera.k2: 0.0802101876711164
-Camera.p1: 0.00781234440915302
-Camera.p2: 0.00271302928895873
-Camera.k3: 0.0
+Camera.k1: -0.372457936167948
+Camera.k2: 0.197329163311908
+Camera.p1: 0.00153515946357501
+Camera.p2: -0.000222185927672152
+Camera.k3: -0.0603842460553995
 
 # Camera frames per second 
 Camera.fps: 30
 
 # Color order of the images (0: BGR, 1: RGB. It is ignored if images are grayscale)
-Camera.RGB: 0
+Camera.RGB: 1
 
 #--------------------------------------------------------------------------------------------
 # System Parameters
@@ -67,5 +67,4 @@ Viewer.ViewpointF: 2800
 #--------------------------------------------------------------------------------------------
 # Map Parapeters
 #--------------------------------------------------------------------------------------------
-# Map.mapfile: map.bin
-
+Map.mapfile: mono_exp_room_map_airunit.bin

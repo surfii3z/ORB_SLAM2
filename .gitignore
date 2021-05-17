@@ -25,3 +25,5 @@ lib/
 .vscode
 ORBvoc.bin
 ros/devel
+*.log
+*.stderr

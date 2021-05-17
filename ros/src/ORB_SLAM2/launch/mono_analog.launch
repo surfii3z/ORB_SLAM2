@@ -1,9 +1,9 @@
 <launch>
   <arg name="vocab_path" value="$(find orb_slam2)../../../Vocabulary/ORBvoc.bin" />
-  <arg name="config_path" value="$(find orb_slam2)../../../cam_configs/mono_analog_three_coeff_0316.yaml" />
+  <arg name="config_path" value="$(find orb_slam2)../../../cam_configs/mono_air_unit_usb_cam.yaml" />
   
   <node name="orb_slam2_rgbd" pkg="orb_slam2" type="mono" args="$(arg vocab_path) $(arg config_path)">
-    <remap from="camera/color/image_raw" to="camera_crop/image_rect_color"/>
+    <remap from="camera/color/image_raw" to="usb_cam/image_raw"/>
   </node>
 
 </launch>

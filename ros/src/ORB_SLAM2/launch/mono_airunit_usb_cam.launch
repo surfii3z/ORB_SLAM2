@@ -1,16 +1,13 @@
 <launch>
   <arg name="vocab_path" value="$(find orb_slam2)../../../Vocabulary/ORBvoc.bin" />
-  <arg name="config_path" value="$(find orb_slam2)../../../cam_configs/mono_tello.yaml" />
+  <arg name="config_path" value="$(find orb_slam2)../../../cam_configs/mono_air_unit_usb_cam.yaml" />
   <arg name="save_map" value="0"/>
 
   
   <node name="orb_slam2_mono" pkg="orb_slam2" type="mono" args="$(arg vocab_path) $(arg config_path) $(arg save_map)" output="screen">
-    <remap from="camera/image_raw" to="camera/color/image_raw" />
+    <remap from="camera/image_raw" to="usb_cam/image_raw" />
 
   </node>
-
-  <!-- start up realsense d435i -->
-  <!-- <include file="$(find realsense2_camera)/launch/rs_rgbd.launch" /> -->
 
 
 </launch>

@@ -21,7 +21,7 @@ Camera.p2: 0.0
 Camera.k3: 0.0
 
 # Camera frames per second 
-Camera.fps: 30.0
+Camera.fps: 15.0
 
 # IR projector baseline times fx (aprox.)
 Camera.bf: 30.530270385742188
@@ -46,7 +46,7 @@ System.LoopClosing: 1
 #--------------------------------------------------------------------------------------------
 
 # ORB Extractor: Number of features per image
-ORBextractor.nFeatures: 2000
+ORBextractor.nFeatures: 1000
 
 # ORB Extractor: Scale factor between levels in the scale pyramid 	
 ORBextractor.scaleFactor: 1.2
@@ -78,5 +78,5 @@ Viewer.ViewpointF: 2800
 #--------------------------------------------------------------------------------------------
 # Map Parapeters
 #--------------------------------------------------------------------------------------------
-Map.mapfile: exp_room_map.bin
+Map.mapfile: rgbd_exp_room_map_d435i_2.bin
 

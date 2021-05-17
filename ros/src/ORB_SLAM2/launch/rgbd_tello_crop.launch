@@ -1,0 +1,14 @@
+<launch>
+  <arg name="vocab_path" value="$(find orb_slam2)../../../Vocabulary/ORBvoc.bin" />
+  <arg name="config_path" value="$(find orb_slam2)../../../cam_configs/rgbd_tello_crop.yaml" />
+  <arg name="save_map" value="0"/>
+
+  
+  <node name="orb_slam2_mono" pkg="orb_slam2" type="rgbd" args="$(arg vocab_path) $(arg config_path) $(arg save_map)" output="screen">
+    <remap from="camera/rgb/image_raw" to="packnet/color/image_raw" />
+    <remap from="camera/registered_depth/image_raw" to="packnet/depth/image_raw" />
+  </node>
+
+
+
+</launch>

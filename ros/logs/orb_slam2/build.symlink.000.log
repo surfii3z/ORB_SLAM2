@@ -1,6 +1,0 @@
-Symlinking /home/nvadmin/jy_ws/orb_slam_ws/orb_slam2/ros/devel/share/orb_slam2/cmake/orb_slam2Config.cmake
-Symlinking /home/nvadmin/jy_ws/orb_slam_ws/orb_slam2/ros/devel/share/orb_slam2/cmake/orb_slam2Config-version.cmake
-Symlinking /home/nvadmin/jy_ws/orb_slam_ws/orb_slam2/ros/devel/lib/pkgconfig/orb_slam2.pc
-Symlinking /home/nvadmin/jy_ws/orb_slam_ws/orb_slam2/ros/devel/lib/orb_slam2/stereo
-Symlinking /home/nvadmin/jy_ws/orb_slam_ws/orb_slam2/ros/devel/lib/orb_slam2/mono
-Symlinking /home/nvadmin/jy_ws/orb_slam_ws/orb_slam2/ros/devel/lib/orb_slam2/rgbd

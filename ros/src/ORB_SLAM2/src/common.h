@@ -1,6 +1,8 @@
 #ifndef COMMON_H
 #define COMMON_H
 
+#define SCALE_MONO_MAP 1
+
 /*  The default coordinate of ORB_SLAM2 trajectory is EDN (East(x)-Down(y)-North(z)).
  *  
  *  This matrix change from EDN to ENU
@@ -49,6 +51,7 @@ public:
   {
     mOdomPub = pnh->advertise<nav_msgs::Odometry>("/orb_slam/odom", 1);
     mPoseStampedPub = pnh->advertise<geometry_msgs::PoseStamped>("/orb_slam/pose", 1);
+    mPoseStampedFastPlannerPub = pnh->advertise<geometry_msgs::PoseStamped>("/orb_slam/fast_planner_pose", 1);
     mPoseWithCovStampedPub = pnh->advertise<geometry_msgs::PoseWithCovarianceStamped>("/orb_slam/pose_with_cov", 1);
 
   }
@@ -64,12 +67,14 @@ public:
   ros::NodeHandle *pnh;
   ros::Publisher mOdomPub;
   ros::Publisher mPoseStampedPub;
+  ros::Publisher mPoseStampedFastPlannerPub;
   ros::Publisher mPoseWithCovStampedPub;
 
 
   cv::Mat cvTcw;
   nav_msgs::Odometry odom_msg;
   geometry_msgs::PoseStamped poseStamped_msg;
+  geometry_msgs::PoseStamped poseStamped_fast_planner_msg;
   geometry_msgs::PoseWithCovarianceStamped poseWithCovStamped_msg;
 
 };
@@ -92,9 +97,18 @@ static const Eigen::Matrix3d cv_to_ros = [] {
   return tmp;
 }();
 
+static const Eigen::Matrix3d cv_to_fast_planner = [] {
+  Eigen::Matrix3d tmp;
+  tmp << 0, 0, 1,
+        -1, 0, 0,
+         0,-1, 0;
+  return tmp;
+}();
+
 namespace common
 {
   inline void CreateMsg(nav_msgs::Odometry &odom, geometry_msgs::PoseStamped &poseStamped,
+                        geometry_msgs::PoseStamped &poseStampedFastPlanner,
                         geometry_msgs::PoseWithCovarianceStamped &poseWithCovStamped,
                         const sensor_msgs::ImageConstPtr &msgRGB,
                         cv::Mat cvTcw)
@@ -108,9 +122,12 @@ namespace common
     // Extract rotation matrix and translation vector from
     Eigen::Matrix3d rot = Twc.block<3, 3>(0, 0);
     Eigen::Vector3d trans = Twc.block<3, 1>(0, 3);
+    Eigen::Vector3d trans_fast_planner = Twc.block<3, 1>(0, 3);
+
 
     // Transform from CV coordinate system to ROS coordinate system on camera coordinates
     Eigen::Quaterniond quat(cv_to_ros * rot * cv_to_ros.transpose());
+    Eigen::Quaterniond quat_fast_planner(cv_to_ros * rot);
     trans = cv_to_ros * trans;
 
     // Format the Odom msg
@@ -118,9 +135,9 @@ namespace common
     // odom.header.frame_id = msgRGB->header.frame_id;
     odom.header.frame_id = "world";
 
-    odom.pose.pose.position.x = trans(0);
-    odom.pose.pose.position.y = trans(1);
-    odom.pose.pose.position.z = trans(2);
+    odom.pose.pose.position.x = trans(0) * SCALE_MONO_MAP;
+    odom.pose.pose.position.y = trans(1) * SCALE_MONO_MAP;
+    odom.pose.pose.position.z = trans(2) * SCALE_MONO_MAP;
 
     odom.pose.pose.orientation.x = quat.x();
     odom.pose.pose.orientation.y = quat.y();
@@ -138,21 +155,34 @@ namespace common
     poseStamped.header.stamp = msgRGB->header.stamp;
     poseStamped.header.frame_id = "world";
 
-    poseStamped.pose.position.x = trans(0);
-    poseStamped.pose.position.y = trans(1);
-    poseStamped.pose.position.z = trans(2);
+    poseStamped.pose.position.x = trans(0) * SCALE_MONO_MAP;
+    poseStamped.pose.position.y = trans(1) * SCALE_MONO_MAP;
+    poseStamped.pose.position.z = trans(2) * SCALE_MONO_MAP;
 
     poseStamped.pose.orientation.x = quat.x();
     poseStamped.pose.orientation.y = quat.y();
     poseStamped.pose.orientation.z = quat.z();
     poseStamped.pose.orientation.w = quat.w();
 
+    // Format the poseStampedFastPlanner msg
+    poseStampedFastPlanner.header.stamp = msgRGB->header.stamp;
+    poseStampedFastPlanner.header.frame_id = "world";
+
+    poseStampedFastPlanner.pose.position.x = trans(0) * SCALE_MONO_MAP;
+    poseStampedFastPlanner.pose.position.y = trans(1) * SCALE_MONO_MAP;
+    poseStampedFastPlanner.pose.position.z = trans(2) * SCALE_MONO_MAP;
+
+    poseStampedFastPlanner.pose.orientation.x = quat_fast_planner.x();
+    poseStampedFastPlanner.pose.orientation.y = quat_fast_planner.y();
+    poseStampedFastPlanner.pose.orientation.z = quat_fast_planner.z();
+    poseStampedFastPlanner.pose.orientation.w = quat_fast_planner.w();
+
     // Create pose message and update it with current camera pose
     poseWithCovStamped.header.stamp = msgRGB->header.stamp;
     poseWithCovStamped.header.frame_id = "odom";
-    poseWithCovStamped.pose.pose.position.x = trans(0);
-    poseWithCovStamped.pose.pose.position.y = trans(1);
-    poseWithCovStamped.pose.pose.position.z = trans(2);
+    poseWithCovStamped.pose.pose.position.x = trans(0) * SCALE_MONO_MAP;
+    poseWithCovStamped.pose.pose.position.y = trans(1) * SCALE_MONO_MAP;
+    poseWithCovStamped.pose.pose.position.z = trans(2) * SCALE_MONO_MAP;
     poseWithCovStamped.pose.pose.orientation.x = quat.x();
     poseWithCovStamped.pose.pose.orientation.y = quat.y();
     poseWithCovStamped.pose.pose.orientation.z = quat.z();

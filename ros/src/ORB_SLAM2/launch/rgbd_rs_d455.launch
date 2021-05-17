@@ -1,7 +1,8 @@
 <launch>
   <arg name="vocab_path" value="$(find orb_slam2)../../../Vocabulary/ORBvoc.bin" />
-  <arg name="config_path" value="$(find orb_slam2)../../../cam_configs/rgbd_rs_d435i.yaml" />
-  <arg name="save_map" value="1" />  <!-- the map is saved at /home/jy/.ros/ -->
+  <arg name="config_path" value="$(find orb_slam2)../../../cam_configs/rgbd_rs_d455.yaml" />
+  <arg name="save_map" value="1" /> <!-- the map is saved at /home/jy/.ros/ -->
+
   
   <node name="orb_slam2_rgbd" pkg="orb_slam2" type="rgbd" args="$(arg vocab_path) $(arg config_path) $(arg save_map)" output="screen">
     <!-- <remap from="camera/rgb/image_raw" to="camera/color/image_raw" /> -->
@@ -9,8 +10,8 @@
 
   </node>
 
-  <!-- start up realsense d435i -->
-  <include file="$(find realsense2_camera)/launch/rs_rgbd.launch" />
+  <!-- start up realsense d455 -->
+  <!-- <include file="$(find realsense2_camera)/launch/rs_rgbd.launch" /> -->
 
 
 </launch>
