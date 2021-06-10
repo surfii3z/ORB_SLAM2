@@ -27,3 +27,4 @@ ORBvoc.bin
 ros/devel
 *.log
 *.stderr
+*.bag

@@ -7,6 +7,8 @@
   <node name="orb_slam2_mono" pkg="orb_slam2" type="rgbd" args="$(arg vocab_path) $(arg config_path) $(arg save_map)" output="screen">
     <remap from="camera/rgb/image_raw" to="packnet/color/image_raw" />
     <remap from="camera/registered_depth/image_raw" to="packnet/depth/image_raw" />
+
+    <remap from="/orb_slam/fast_planner_pose" to="/nullify" />
   </node>
 
 

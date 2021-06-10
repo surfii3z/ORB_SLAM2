@@ -2,6 +2,12 @@
 #define COMMON_H
 
 #define SCALE_MONO_MAP 1
+// #define TIME_DEBUG_MODE
+
+#ifdef TIME_DEBUG_MODE
+  #define NUM_IMAGES 1101
+#endif
+
 
 /*  The default coordinate of ORB_SLAM2 trajectory is EDN (East(x)-Down(y)-North(z)).
  *  
@@ -76,6 +82,13 @@ public:
   geometry_msgs::PoseStamped poseStamped_msg;
   geometry_msgs::PoseStamped poseStamped_fast_planner_msg;
   geometry_msgs::PoseWithCovarianceStamped poseWithCovStamped_msg;
+  
+#ifdef TIME_DEBUG_MODE
+  vector<float> vTimesOperate;
+  vTimesOperate.resize(NUM_IMAGES);
+  std::chrono::monotonic_clock::time_point t1;
+  std::chrono::monotonic_clock::time_point t2;
+#endif
 
 };
 
