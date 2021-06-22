@@ -28,3 +28,6 @@ ros/devel
 *.log
 *.stderr
 *.bag
+nf_results/
+rgbd_kitti_*.yaml
+rgbd_kitti
