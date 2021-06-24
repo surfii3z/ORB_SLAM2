@@ -1,13 +1,14 @@
-# Enhanced Features from original ORB_SLAM2
+## General Information
+### Enhanced Features from original ORB_SLAM2
 - ROS publish odometry message: [raulmur/ORB_SLAM2/PR#692](https://github.com/raulmur/ORB_SLAM2/pull/692)
 - ROS build with catkin build: [raulmur/ORB_SLAM2/PR#2](https://github.com/raulmur/ORB_SLAM2/pull/2)
 - Binary version of vocabs to speed up the system start-up: [raulmur/ORB_SLAM2/PR#21](https://github.com/raulmur/ORB_SLAM2/pull/21)
 - Save/ load map: [raulmur/ORB_SLAM2/PR#381](https://github.com/raulmur/ORB_SLAM2/pull/381)
 
-### Installation
-1) Install cuda-enable OpenCV. Tested with `OpenCV 3.4.11` and `CUDA 10.1`
+## Installation
+1) Install cuda-enable OpenCV. Recommended version: `OpenCV 3.4.13` and `CUDA 11.0`
     - [Installing Multiple CUDA & cuDNN Versions in Ubuntu](https://towardsdatascience.com/installing-multiple-cuda-cudnn-versions-in-ubuntu-fcb6aa5194e2)
-    - Compile opencv with cuda following this [link](https://learnopencv.com/opencv-dnn-with-gpu-support/). Tested with `OpenCV 3.4.13` and `CUDA 11.1`
+    - Compile opencv with cuda following this [link](https://learnopencv.com/opencv-dnn-with-gpu-support/). 
 
 2) Install the prerequisites from [ORB_SLAM2](https://github.com/raulmur/ORB_SLAM2) original repo.
 3) Build using `build.sh`
